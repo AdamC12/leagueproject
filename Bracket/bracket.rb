@@ -9,9 +9,7 @@ player_list = GenerateBracket.add_next_players(player_list, player_numbers)
 
 player_list = player_list.shuffle
 
-bracket = GenerateBracket.generate_player_bracket(player_list, bracket)
-
-puts bracket
+GenerateBracket.generate_player_bracket(player_list)
 
 
 

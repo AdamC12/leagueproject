@@ -30,9 +30,7 @@ class GenerateBracket
       add_player(player, player_list)
       counter -= 1
     end
-    if player_list.count.odd?
-      player_list << 'Bye'
-    end
+    player_list << 'Bye' if player_list.count.odd?
     player_list
   end
 
@@ -40,33 +38,96 @@ class GenerateBracket
     player_list << player
   end
 
-  def self.generate_player_bracket(player_list, bracket)
-    match_number = (player_list.count / 2)
-    champion_list = generate_champs
-    while match_number.positive?
-      match = {'Player 1: ' => {'Name: ' => player_list.shift,
-                                'Champs: ' => assign_champs(champion_list)},
-               'Player 2: ' => {'Name: ' => player_list.shift,
-                                'Champs: ' => assign_champs(champion_list)}}
-      bracket << "Match #{match_number} : #{match}"
-      match_number -= 1
+  def self.generate_player_bracket(player_list)
+    match_list = []
+    match_counter = 1
+    while player_list
+      champion_list = ChampionGenerator.generate_champs
+      champion_list = champion_list.map { |c| c == 'MonkeyKing' ? 'Wukong' : c }
+      player_1_bans = []
+      player_2_bans = []
+      player_1 = player_list.shift
+      player_2 = player_list.shift
+
+      counter = 0
+      while true
+        p "#{player_1} please enter ban for #{player_2}"
+        response = gets.chomp
+        player_2_bans << response
+        counter += 1
+        if counter == 3
+          player_2_champs = assign_champs(champion_list, player_2_bans)
+          break
+        end
+      end
+      counter = 0
+      while true
+        p "#{player_2} please enter ban for #{player_1}"
+        response = gets.chomp
+        player_1_bans << response
+        counter += 1
+        if counter == 3
+          player_1_champs = assign_champs(champion_list, player_1_bans)
+          break
+        end
+      end
+      player_1_match_details = {name: player_1,
+                                champs: player_1_champs.flatten,
+                                bans: player_1_bans}
+      player_2_match_details = {name: player_2,
+                                champs: player_2_champs.flatten,
+                                bans: player_2_bans}
+      match_list << {match: match_counter, player_1_details: player_1_match_details, player_2_details: player_2_match_details}
+      match_counter += 1
+      break if player_list.empty?
     end
-    bracket.reverse
+    create_bracket_gui(match_list)
   end
 
-  def self.generate_champs
-    champ_list = []
-    downloaded_champs = download_champions
-    downloaded_champs.each do |champion|
-      champ_list << champion
-    end
-    champ_list
-  end
 
-  def self.assign_champs(champ_list)
+  def self.assign_champs(champ_list, ban_list)
     assigned_champs = []
+    champ_list = champ_list.each do |champ|
+      champ.strip.downcase
+    end
+    ban_list.each do |ban|
+      banned_champ = ban.strip.downcase
+      champ_list -= [banned_champ]
+    end
     assigned_champs << champ_list.sample(3)
     assigned_champs
   end
 
+  def self.create_bracket_gui(match_list)
+    match_list.each do |match|
+      puts "\n\n\n"
+      puts "|=============================|"
+      puts "|Match number: #{match[:match]}"
+      puts "|=============================|"
+      print "|#{cell_calculator(match[:player_1_details][:name])}|#{cell_calculator(match[:player_2_details][:name])}|\n"
+      puts "|=============================|"
+      puts "|Champions                    |"
+      puts "|=============================|"
+      (0..(match[:player_1_details][:champs].count - 1)).each do |number|
+        print "|#{cell_calculator(match[:player_1_details][:champs][number])}|#{cell_calculator(match[:player_2_details][:champs][number])}|\n"
+      end
+      puts "|=============================|"
+      puts "|Bans                         |"
+      puts "|=============================|"
+
+      (0..(match[:player_1_details][:champs].count - 1)).each do |number|
+        print "|#{cell_calculator(match[:player_1_details][:bans][number])}|#{cell_calculator(match[:player_2_details][:bans][number])}|\n"
+      end
+      puts "|=============================|"
+      puts "\n"
+    end
+  end
+
+
+  def self.cell_calculator(name)
+    white_space = ((14 - name.length) + name.length)
+    cell = name.ljust(white_space)
+    cell
+  end
 end
+
