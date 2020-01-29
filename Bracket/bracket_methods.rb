@@ -1,5 +1,6 @@
 require_relative 'champion_generator'
-
+require_relative 'bans'
+require_relative 'gui_generator'
 class GenerateBracket
 
   def self.number_of_players
@@ -44,43 +45,27 @@ class GenerateBracket
     while player_list
       champion_list = ChampionGenerator.generate_champs
       champion_list = champion_list.map { |c| c == 'MonkeyKing' ? 'Wukong' : c }
-      player_1_bans = []
-      player_2_bans = []
       player_1 = player_list.shift
       player_2 = player_list.shift
 
-      counter = 0
-      while true
-        p "#{player_1} please enter ban for #{player_2}"
-        response = gets.chomp
-        player_2_bans << response
-        counter += 1
-        if counter == 3
-          player_2_champs = assign_champs(champion_list, player_2_bans)
-          break
-        end
-      end
-      counter = 0
-      while true
-        p "#{player_2} please enter ban for #{player_1}"
-        response = gets.chomp
-        player_1_bans << response
-        counter += 1
-        if counter == 3
-          player_1_champs = assign_champs(champion_list, player_1_bans)
-          break
-        end
-      end
-      player_1_match_details = {name: player_1,
-                                champs: player_1_champs.flatten,
-                                bans: player_1_bans}
-      player_2_match_details = {name: player_2,
-                                champs: player_2_champs.flatten,
-                                bans: player_2_bans}
-      match_list << {match: match_counter, player_1_details: player_1_match_details, player_2_details: player_2_match_details}
+      player_1_bans = ChampionBans.generate_ban_list(player_1,player_2,champion_list)
+      player_1_champs = assign_champs(champion_list, player_1_bans)
+
+      player_2_bans = ChampionBans.generate_ban_list(player_2,player_1,champion_list)
+      player_2_champs = assign_champs(champion_list, player_2_bans)
+
+      player_1_match_details = { name: player_1,
+                                 champs: player_1_champs.flatten,
+                                 bans: player_1_bans }
+      player_2_match_details = { name: player_2,
+                                 champs: player_2_champs.flatten,
+                                 bans: player_2_bans }
+      match_list << { match: match_counter, player_1_details: player_1_match_details,
+                      player_2_details: player_2_match_details }
       match_counter += 1
       break if player_list.empty?
     end
+
     GuiGenerator.create_bracket_gui(match_list)
   end
 
@@ -98,6 +83,6 @@ class GenerateBracket
     assigned_champs
   end
 
-
 end
+
 
