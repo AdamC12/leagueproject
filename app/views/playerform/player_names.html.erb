@@ -1,0 +1,12 @@
+<h1>Champion Bans</h1>
+
+<%= form_with scope: :playerform, url: '/playerform', local: true do |form| %>
+  <p>
+    <%= form.label :number_of_players %><br>
+    <%= form.select :number_of_players, 2..20 %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
