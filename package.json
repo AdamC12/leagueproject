@@ -1,0 +1,7 @@
+{
+  "name": "railsapp",
+  "private": true,
+  "dependencies": {
+    "js-autocomplete": "^1.0.4"
+  }
+}

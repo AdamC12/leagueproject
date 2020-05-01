@@ -1,0 +1,19 @@
+<h1>Player Names</h1>
+<p>
+  <%= "the number of players in this tournament are: #{@number_of_players}" %>
+</p>
+<p>
+  <%= "Please enter the names of the players in the tournament" %>
+</p>
+<p>
+
+  <%= form_with url: "/player_names" do |form| %>
+    <% @number_of_players.times do |i| %>
+      <%= form.label :name, "Player #{i + 1}" %>
+      <%= form.text_field "name#{i + 1}".to_sym %>
+      <br>
+      <br>
+    <% end %>
+    <%= form.submit %>
+  <% end %>
+</p>
