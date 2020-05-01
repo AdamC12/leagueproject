@@ -7,6 +7,7 @@ require 'json'
 class ChampionGenerator
 
   def self.download_champions
+    require 'pry'
     riot_types = Net::HTTP.get('ddragon.leagueoflegends.com', '/realms/euw.json')
     champ_version = JSON.parse(riot_types)['n']['champion']
     champ_list = Net::HTTP.get('ddragon.leagueoflegends.com',
@@ -16,6 +17,7 @@ class ChampionGenerator
     champions['data'].each do |hash|
       champion_list << hash.first
     end
+    binding.pry
     champion_list
   end
 

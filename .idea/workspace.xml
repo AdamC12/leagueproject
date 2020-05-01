@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4c62903c-bdba-4c30-aaa7-a31770936143" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="4c62903c-bdba-4c30-aaa7-a31770936143" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/railsapp/app/models/player.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/railsapp/app/views/playerform/number_of_players.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/league-1v1-bracket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/league-1v1-bracket.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bracket/champion_generator.rb" beforeDir="false" afterPath="$PROJECT_DIR$/Bracket/champion_generator.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/railsapp/app/views/playerform/player_names.html.erb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/railsapp" />
+  </component>
   <component name="ProjectId" id="1WqEEp0s3hvk6Um105D1XoAXE82" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/railsapp/app/views/playerform" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -20,17 +38,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/railsapp/app/views/playerform" />
+    </key>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -44,10 +55,18 @@
       <option name="presentableId" value="Default" />
       <updated>1579868615570</updated>
       <workItem from="1579868616642" duration="6037000" />
+      <workItem from="1587124808703" duration="522000" />
+      <workItem from="1587809413260" duration="6094000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2552" y="408" width="816" height="550" key="find.popup" timestamp="1588326580304">
+      <screen x="1680" y="23" width="2560" height="1321" />
+    </state>
+    <state x="2552" y="408" width="816" height="550" key="find.popup/1680.23.2560.1321/0.23.1680.1027@1680.23.2560.1321" timestamp="1588326580304" />
   </component>
 </project>
